@@ -1,0 +1,19 @@
+{
+  "name": "reduxtagram",
+  "version": "1.0.0",
+  "description": "Instagram clone made with React, Redux, Webpack, Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junjunparkpark/Reduxtagram.git"
+  },
+  "author": "Jun Park",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junjunparkpark/Reduxtagram/issues"
+  },
+  "homepage": "https://github.com/junjunparkpark/Reduxtagram#readme"
+}
