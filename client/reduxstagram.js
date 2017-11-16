@@ -17,10 +17,10 @@ const router = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={PhotoGrid}> </IndexRoute>
-      <Route path="/view/:postId" component={single}></Route>
+      <Route path="/view/:postId" component={Single}></Route>
     </Route>
   </Router>
 )
 
-render(<Main/>, document.getElementById('root'));
+render(router, document.getElementById('root'));
 
