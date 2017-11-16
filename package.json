@@ -4,7 +4,12 @@
   "description": "Instagram clone made with React, Redux, Webpack, Node",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack",
+    "test": "NODE_ENV=production mocha './tests/**/*.spec.js' --compilers js:babel-core/register",
+    "lint": "eslint --color src/ test/ --ext .js*",
+    "clean": "rimraf dist",
+    "start": "node dev-server.js"
   },
   "repository": {
     "type": "git",
