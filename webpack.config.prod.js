@@ -1,26 +1,22 @@
-'use strict';
-
-const path = require('path');
-const webpack = require('webpack');
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-
   entry: [
-    './src/js/index.js'
-  ],
 
+    './client/reduxstagram'
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
-
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: 'production'
+        'NODE_ENV': "'production'"
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -29,33 +25,20 @@ module.exports = {
       }
     })
   ],
-
   module: {
     loaders: [
       // js
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
+        test: /\.js$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'src/js')
+        include: path.join(__dirname, 'client')
       },
-
       // CSS
       {
         test: /\.styl$/,
-        exclude: /(node_modules)/,
-        loader: 'style-loader!css-loader!stylus-loader',
-        include: path.join(__dirname, 'src/css')
+        include: path.join(__dirname, 'client'),
+        loader: 'style-loader!css-loader!stylus-loader'
       }
     ]
-  },
-
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.styl'],
-    fallback: path.join(__dirname, 'node_modules')
-  },
-
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules')
   }
 };

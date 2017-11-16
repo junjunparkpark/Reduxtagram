@@ -1,32 +1,27 @@
-const path = require('path');
-const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config.dev');
+var path = require('path');
+var express = require('express');
+var webpack = require('webpack');
+var config = require('./webpack.config.dev');
 
-const app = express();
-const compiler = webpack(config);
+var app = express();
+var compiler = webpack(config);
 
-const PORT = 8888;
-
-app.use(webpackDevMiddleware(compiler, {
+app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
 }));
 
-app.use(webpackHotMiddleware(compiler));
+app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/src/index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(8888, 'localhost', function (err) {
+app.listen(7770, 'localhost', function (err) {
   if (err) {
-    console.log(`Error: ${err}`); // eslint-disable-line
-
-    process.exit(1);
+    console.log(err);
+    return;
   }
 
-  console.log(`server running at http://localhost:${PORT}`); // eslint-disable-line
+  console.log('Listening at http://localhost:7770');
 });
