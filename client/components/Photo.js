@@ -20,7 +20,6 @@ const Photo = ({ post, i, comments }) => (
       <p>{post.caption}</p>
       <div className="control-buttons">
         <button className="likes">&hearts; {post.likes}</button>
-        </div>
         <Link className="button" to={`/view/${post.code}`}>
           <span className="comment-count">
             <span className="speech-bubble">
@@ -28,6 +27,7 @@ const Photo = ({ post, i, comments }) => (
             {comments[post.code] ? comments[post.code].length : 0}
           </span>
         </Link>
+      </div>
     </figcaption>
   </figure>
 );
