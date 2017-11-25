@@ -12,11 +12,20 @@ class Comments extends Component {
       </div>
     )
   }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const postId = this.props.params.postId;
+    const author = this.refs.author.value;
+    const comment = this.refs.comment.value;
+
+  }
+
   render() {
     return (
       <div className="comment">
-        {this.props.postComment.map(this.renderComment)}
-        <form ref="commentForm" className="comment-form">
+        {this.props.postComments.map(this.renderComment)}
+        <form ref="commentForm" className="comment-form" onSubmit={this.handleSubmit}>
           <input type="text" ref="author" placeholder="author"/>
           <input type="text" ref="comment" placeholder="comment"/>
           <input type="submit" hidden/>
