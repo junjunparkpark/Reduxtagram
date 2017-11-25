@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 
 class Comments extends Component {
-  renderComment(comment, i) {
-    return (
-      <div className="comment" key={i}>
-        <p>
-          <strong>{comment.user}</strong>
-          {comment.text}
-          <button className="remove-comment" onClick={this.props.removeComment}>&times;</button>
-        </p>
-      </div>
-    )
+  handleClick(i) {
+    this.props.removeComment(this.props.params.postId, i)
   }
 
   handleSubmit(e) {
@@ -22,10 +14,20 @@ class Comments extends Component {
     this.refs.commentForm.reset();
   }
 
+
+
   render() {
     return (
       <div className="comment">
-        {this.props.postComments.map(this.renderComment)}
+        {this.props.postComments.map((comment, i) => (
+          <div className="comment" key={i}>
+            <p>
+              <strong>{comment.user}</strong>
+              {comment.text}
+              <button className="remove-comment" onClick={this.handleClick.bind(this, i)}>&times;</button>
+            </p>
+          </div>          
+        ))}
         <form ref="commentForm" className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" ref="author" placeholder="author"/>
           <input type="text" ref="comment" placeholder="comment"/>
