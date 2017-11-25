@@ -6,6 +6,7 @@ function postComments(state = [], action) {
         text: action.comment
       }];
     case 'REMOVE_COMMENT':
+    console.log('Removing a comment');
       return state;
 
     default:
